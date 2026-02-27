@@ -12,3 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a One line test
         run: echo npm test
+
+  docker:
+    needs: test
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Docker Build
+        run: docker build -t cart .
